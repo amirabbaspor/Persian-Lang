@@ -10,7 +10,7 @@ for line in main_code:
 
 
     
-    if "riazi(" in line :
+    while "riazi(" in line :
         first = line.index("riazi(")
         x_ = 0 
         founded = 0
@@ -27,8 +27,14 @@ for line in main_code:
             x_ += 1
         
         if end != None :
-            print(eval(line[first+len("riazi("):end]))
+            line = line[0:first] + str(eval(line[first+len("riazi("):end])) + line[end+1:]
 
+
+
+
+
+    if line.startswith("bechap"):
+        print(line[len("bechap"):])
 
             
 
