@@ -1,6 +1,6 @@
 
 variable = {
-    "abbas": "creator :)",
+    "abbas": "creator :-",
 }
 main_code = []
 
@@ -27,12 +27,13 @@ with open("main.persian","r",encoding="UTF-8") as f:
     main_code = f.read().replace("\n","").split(";")
 
 
+print("---  start")
+
 for line in main_code:
     if line == "":
         continue
 
-    print("---  start")
-
+    
 
     
     while "riazi(" in line :
@@ -54,9 +55,18 @@ for line in main_code:
         if end != None :
             line : str = line[0:first] + str(eval(line[first+len("riazi("):end])) + line[end+1:]
 
+
     while "$" in line :
-        # todo: set variable
-        pass
+        start = line.index("$") + 1
+        steps = 0
+        end = None
+        while True:
+            if line[start+steps] in [" ",")"]:
+                end = start + steps
+                break
+            steps += 1
+        var = line[start:end]
+        line = line[0:start-1] + variable[var].strip("\"") + line[end:]
 
 
 
@@ -73,6 +83,6 @@ for line in main_code:
             variable[name] = value
             
 
-    print("---  finished")
-
-# print(variable)
+    
+print("---  finished")
+print(variable)

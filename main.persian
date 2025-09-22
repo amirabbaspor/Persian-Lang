@@ -1,2 +1,3 @@
-bechap( riazi(10+5) )
-yadet bashe sss = "daaaaa";
+bechap( riazi(10+5) );
+yadet bashe sss = "salam";
+bechap($sss salam)
