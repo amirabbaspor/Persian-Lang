@@ -12,6 +12,7 @@ def getArg(line: str,func: str) -> str :
     steps = 0
     finding = True
     while finding:
+        # print(line)
         if (line[start+length+steps] == "("):
             founded += 1
         elif (line[start+length+steps] == ")"):
@@ -58,6 +59,10 @@ for line in main_code:
 
     while "$" in line :
         start = line.index("$") + 1
+        if line[start-2] == "\\":
+            line = line[0:start-2] + "<dollar>" + line[start:]
+            print(line)
+            continue
         steps = 0
         end = None
         while True:
@@ -71,6 +76,7 @@ for line in main_code:
 
 
     if line.startswith("bechap("):
+        line = line.replace("<dollar>","$")
         print(getArg(line,"bechap("))
 
     elif line.startswith("yadet bashe "):
