@@ -79,6 +79,7 @@ for line in main_code:
         line = line.replace("<dollar>","$")
         print(getArg(line,"bechap("))
 
+
     elif line.startswith("yadet bashe "):
         line_ = line[line.index("yadet bashe ")+len("yadet bashe "):]
         name = line_.split("=")[0][0:-1]
