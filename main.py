@@ -3,6 +3,7 @@ variable = {
     "abbas": "creator :-",
 }
 main_code = []
+line_count = 0
 
 
 def getArg(line: str,func: str) -> str :
@@ -31,10 +32,12 @@ with open("main.persian","r",encoding="UTF-8") as f:
 print("---  start")
 
 for line in main_code:
+    line_count += 1
     if line == "":
         continue
-
     
+    if line.startswith("#"):
+        continue
 
     
     while "riazi(" in line :
@@ -71,13 +74,23 @@ for line in main_code:
                 break
             steps += 1
         var = line[start:end]
-        line = line[0:start-1] + variable[var].strip("\"") + line[end:]
+        line = line[0:start-1] + variable[var].strip("") + line[end:]
 
 
 
     if line.startswith("bechap("):
         line = line.replace("<dollar>","$")
         print(getArg(line,"bechap("))
+
+
+    elif line.startswith("age("):
+        condition = getArg(line,"age(")
+        condition = condition.replace("va","and")
+        condition = condition.replace("ya","or")
+        condition = condition.replace("na","not")
+        result = eval(condition)
+        print(result)
+
 
 
     elif line.startswith("yadet bashe "):
@@ -89,6 +102,8 @@ for line in main_code:
         else :
             variable[name] = value
             
+
+
 
     
 print("---  finished")

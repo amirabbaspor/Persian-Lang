@@ -1,3 +1,4 @@
 bechap( riazi(10+5) );
 yadet bashe sss = "salam";
-bechap($sss salam)
+bechap($sss salam);
+age(1==1 va na $sss == "salam");
